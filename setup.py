@@ -24,6 +24,6 @@ setup(
     ],
     packages=["convenex"],
     include_package_data=True,
-    install_requires=["click"],
+    install_requires=["click", "xmltodict"],
     entry_points={"console_scripts": ["convenex=convenex.__main__:main"]},
 )
