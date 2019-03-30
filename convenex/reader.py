@@ -11,7 +11,7 @@ class Note:
         self.updated = updated
         self.tag = tag
 
-    def __str__(self):
+    def __str__(self) -> str:
         name = f'{self.title}'
         return name
 
@@ -31,7 +31,7 @@ class Reader:
         data = self._parse_file()
         notes_data = data["en-export"]["note"]
         for note in notes_data:
-            del note["note-attributes"]  # we don't need this
+            del note["note-attributes"]  # breaks unpacking, not needed
             note = Note(**note)
             notes.append(note)
         return notes
