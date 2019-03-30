@@ -1,15 +1,37 @@
+from typing import List
+
 import xmltodict
 
 
+class Note:
+    def __init__(self, title: str, content: str, created: str, updated: str, tag: List[str] = []) -> None:
+        self.title = title
+        self.content = content
+        self.created = created
+        self.updated = updated
+        self.tag = tag
+
+    def __str__(self):
+        name = f'{self.title}'
+        return name
+
+
 class Reader:
-    def __init__(self, format_type):
-        self.format_type = format_type
+    def __init__(self, filename: str) -> None:
+        self.filename = filename
 
-    def read_file(self, path):
-        with open(path, "r") as file:
+    def _parse_file(self) -> dict:
+        with open(self.filename, "r") as file:
             data = file.read()
-            return self._parse_xml(data)
+            parsed_data = xmltodict.parse(data)
+            return parsed_data
 
-    def _parse_xml(self, xml_data):    
-        json_data = xmltodict.parse(xml_data)
-        return json_data
+    def get_notes(self) -> list:
+        notes = []
+        data = self._parse_file()
+        notes_data = data["en-export"]["note"]
+        for note in notes_data:
+            del note["note-attributes"]  # we don't need this
+            note = Note(**note)
+            notes.append(note)
+        return notes
