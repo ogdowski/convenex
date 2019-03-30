@@ -66,3 +66,6 @@ venv.bak/
 
 # IDE
 .vscode
+
+# development
+test.enex

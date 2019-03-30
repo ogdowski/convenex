@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e7d966b4bd1f82a4689fb011dd6657f1767963e8bb2f4985d57bbc1507e52adb"
+            "sha256": "8c697bf70538f51c88e4dee71831af4f6ce2528f3696c4799afa807279847039"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,10 @@
             ],
             "index": "pypi",
             "version": "==7.0"
+        },
+        "convenex": {
+            "editable": true,
+            "path": "."
         },
         "xmltodict": {
             "hashes": [

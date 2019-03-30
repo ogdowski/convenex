@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 click = "*"
 xmltodict = "*"
+convenex = {editable = true,path = "."}
 
 [requires]
 python_version = "3.7"
